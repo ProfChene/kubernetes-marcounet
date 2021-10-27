@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind:       Deployment
+metadata:
+    labels:
+        app.kubernetes.io/name: load-balancer-example
+    name: marcounet
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app.kubernetes.io/name: load-balancer-example
+    template:
+        metadata:
+            labels:
+                app.kubernetes.io/name: load-balancer-example
+        spec:
+            containers:
+                -   image: marci/pointless:sha-abcba0e
+                    name:  marcounet
+                    ports:
+                        - containerPort: 3000
+                    env:
+                        - name: ENV
+                          value: prod
