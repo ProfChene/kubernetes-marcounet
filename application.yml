@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+    name: marcounet-preproduction
+    namespace: marcounet
+spec:
+    project: default
+    source:
+        repoURL: https://github.com/ProfChene/kubernetes-marcounet
+        targetRevision: master
+        path: ./
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+    syncPolicy:
+        automated: {}
