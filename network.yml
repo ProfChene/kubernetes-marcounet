@@ -3,13 +3,12 @@ kind: Service
 metadata:
     labels:
         app.kubernetes.io/name: load-balancer-example
-    name: network
+    name: marcounet-load-balancer
 spec:
     selector:
         app.kubernetes.io/name: load-balancer-example
-    type: NodePort
+    type: LoadBalancer
     ports:
         - protocol: TCP
           port: 80
-          nodePort: 30123
           targetPort: 3000
